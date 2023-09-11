@@ -35,6 +35,5 @@
 		"VisualStudioExptTeam.intellicode-api-usage-examples",
 		"VisualStudioExptTeam.vscodeintellicode"
 	],
-	"onCreateCommand": "echo 'export PS1=\"\\W $ \"' >> ~/.bashrc",
-	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y vim"
+	"onCreateCommand": "echo 'export PS1=\"\\W $ \"' >> ~/.bashrc"
 }
