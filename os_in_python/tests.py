@@ -2,6 +2,7 @@ import reminder as app
 from reminder import Task
 
 import datetime as dt
+
 import pytest
 
 
@@ -14,6 +15,11 @@ def test_to_date_exception():
         app._to_date("12345")
 
 
+@pytest.fixture
+def task_list():
+    return [Task(name="pay rent"), Task(name="buy bread")]
+
+
 @pytest.mark.parametrize(
     "test_input, expected",
     [
@@ -22,6 +28,11 @@ def test_to_date_exception():
         ("PAY RENT", Task(name="pay rent")),
     ],
 )
-def test_find_task(test_input, expected):
-    task_list = [Task(name="pay rent"), Task(name="buy bread")]
+def test_find_task(test_input, expected, task_list):
     assert app._find_task(test_input, task_list) == expected
+
+
+def test_save_load_task_list(task_list):
+    app._save_task_list(task_list)
+    load_list = app._get_task_list()
+    assert task_list == load_list
